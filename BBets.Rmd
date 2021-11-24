@@ -1,6 +1,6 @@
 ---
 title: "Brownlows Bets"
-author: "Your Name Goes Here"
+author: "Deniss Gonzalez Ramirez"
 output: 
   html_document:
     number_sections: true
@@ -42,13 +42,40 @@ The function will be given a class_size by number of students, odds, and Number_
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
+```{r}
+Data1<-array(dim = 1000)
+Data1<-as.numeric(Data1)
+for(i in 1:1000){
+  Data1[i] = BrLw(35,2,637)
+}
+hist(Data1)
+sdata1<-sort(Data1)
+low<-sdata1[25]
+high<-sdata1[975]
+
+```
+
+The 95% confidence interval is `r low` to `r high`
 
 # What are the fair odds? Use manipulation of odds in the function to tune Brownlows earnings to zero. 
 
 
 <!--Decide on your methods:  In this section explain the approach you will take to attack the issue --- how will you decide on a likely estimate of professor Brownlow's earnings or losses after 637 bets. Also explain how you construct a 95% confidence interval about your estimate of his winnings !-->
 
+```{r}
+Data1<-array(dim = 1000)
+Data1<-as.numeric(Data1)
+for(i in 1:1000){
+  Data1[i] = BrLw(35,4.40,637)
+}
+hist(Data1)
+sdata1<-sort(Data1)
+low<-sdata1[25]
+high<-sdata1[975]
 
+```
+
+As per the data above, I believe the fair odds would be 4.4
 
 
 # What size of class makes the 2:1 bet fair?  Use manipulation of number of Students to tune Brownlows earnings to zero.
