@@ -70,30 +70,44 @@ The 95% confidence interval is `r low` to `r high`
 After tinkering with the function at hand we determined that 4.39 are fair odds.
 
 ```{r}
-Data2<-array(dim = 150)
+Data2<-array(dim = 200)
 Data2<-as.numeric(Data2)
-for(i in 1:150){
+for(i in 1:200){
   Data2[i] = deniss(odds = 4.39)
 }
 sdata2<-sort(Data2)
 hist(sdata2)
-abline(v=sdata1[10],col="red")
-abline(v=sdata1[190],col="blue")
-low<-sdata2[10]
-high<-sdata2[190]
+abline(v=sdata2[5],col="red")
+abline(v=sdata2[195],col="blue")
+low<-sdata2[5]
+high<-sdata2[195]
 
 ```
 
-The plot above seems to show that zero is centered at the odds of 4.39.
+The plot above seems to show that zero is centered at the odds of roughly 4.39. This indicates the odds that Brownlow would have to give in order for his profits to be close to zero.
 
 # What size of class makes the 2:1 bet fair?  Use manipulation of number of Students to tune Brownlows earnings to zero.
 
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
 
+```{r}
+Data3<-array(dim = 200)
+Data3<-as.numeric(Data3)
+for(i in 1:200){
+  Data3[i] = deniss(numClass = 29)
+}
+sdata3<-sort(Data3)
+hist(sdata3)
+abline(v=sdata3[5],col="red")
+abline(v=sdata3[195],col="blue")
+low<-sdata3[5]
+high<-sdata3[195]
 
+```
 
+The histogram above shows that in order to make the 2:1 bets fair then the number of students in a given class should be about 29. By trying different numbers narrowing down the number of people in the class. We were able to deduce that the less people there was in the class, the less money Brownlow made from bets.
 
-
+The red and blue line in the plot above represents the 95% confidence interval of his earnings.
 
 
 
@@ -101,3 +115,4 @@ The plot above seems to show that zero is centered at the odds of 4.39.
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
 
+Based on the information above, we can conclude that professor Brownlow would have to operate at the odds of 4.39 in order for his profits to center on zero. In order to obtain this result, His class should be at 29 students in order for his current scheme to be at zero profit. We were able to obtain this number by narrowing the number down from 35 and testing which would be closer to zero.
