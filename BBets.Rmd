@@ -50,8 +50,10 @@ Data1<-as.numeric(Data1)
 for(i in 1:1000){
   Data1[i] = deniss()
 }
-hist(Data1)
 sdata1<-sort(Data1)
+hist(sdata1)
+abline(v=sdata1[25],col="red")
+abline(v=sdata1[975],col="blue")
 low<-sdata1[25]
 high<-sdata1[975]
 
