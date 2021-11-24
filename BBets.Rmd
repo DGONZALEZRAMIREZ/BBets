@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
 require(tigerstats)
 require(knitr)
-source(file="BrLw.R")
+source(file="deniss.R")
 ```
 
 
@@ -42,11 +42,13 @@ The function will be given a class_size by number of students, odds, and Number_
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
+The code block below explains that the array has 1000 elements inside of it. Each element of the array Data1 represents how much a brownlow gave 2:1 odds and made 637 bets made as a profit. Had this been done 1000 times is what is depicted below. The data also had to be sorted from low to high in order to determine the 95% confidence level and to determine what odds were the most profitable. The middle of it runs from 25 and 975.
+
 ```{r}
 Data1<-array(dim = 1000)
 Data1<-as.numeric(Data1)
 for(i in 1:1000){
-  Data1[i] = BrLw(35,2,637)
+  Data1[i] = deniss()
 }
 hist(Data1)
 sdata1<-sort(Data1)
@@ -66,7 +68,7 @@ The 95% confidence interval is `r low` to `r high`
 Data1<-array(dim = 1000)
 Data1<-as.numeric(Data1)
 for(i in 1:1000){
-  Data1[i] = BrLw(35,4.40,637)
+  Data1[i] = deniss()
 }
 hist(Data1)
 sdata1<-sort(Data1)
@@ -75,7 +77,7 @@ high<-sdata1[975]
 
 ```
 
-As per the data above, I believe the fair odds would be 4.4
+As per the data above, I am confident that the the fair odds would be 4.4
 
 
 # What size of class makes the 2:1 bet fair?  Use manipulation of number of Students to tune Brownlows earnings to zero.
